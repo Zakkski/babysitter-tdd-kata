@@ -35,4 +35,31 @@ describe '#pay_periods' do
       ])
   end
 
+  describe '#calculate_pay' do
+    it 'should return take two numbers as arguments' do
+      expect(familyA.method(:calculate_pay).arity).to eq 2
+    end
+
+    it 'should return a number' do
+      expect(familyA.calculate_pay(5, 6)).to be_a Numeric
+    end
+
+    it 'should return 15 for one hour 5-6' do
+      expect(familyA.calculate_pay(5, 6)).to eq 15
+    end
+
+    it 'should return 20 for one later hour 11-12' do
+      expect(familyA.calculate_pay(11, 12)).to eq 20
+    end
+
+    it 'should calculate pay over multiple hours' do
+      expect(familyA.calculate_pay(5, 9)).to eq 60
+      expect(familyA.calculate_pay(11, 3)).to eq 80
+    end
+
+    it 'should calculate pay crossing over different pay periods' do
+      expect(familyA.calculate_pay(8, 1)).to eq 85
+      expect(familyA.calculate_pay(5, 4)).to eq 190
+    end
+  end
 end
