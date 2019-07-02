@@ -9,6 +9,7 @@ class Router
 
 
   def run
+    puts `clear`
     while @active
       open_message
       family_id = gets.chomp.to_i
@@ -19,6 +20,7 @@ class Router
         puts "You will make $#{payment}"
         continue_check
       else
+        puts `clear`
         puts "Wrong input, Try Again"
       end
 
@@ -32,6 +34,7 @@ class Router
     print ">"
     input = gets.chomp
     @active = false if input == 'q'
+    puts `clear`
   end
 
   def get_family(id)
@@ -49,6 +52,7 @@ class Router
 
   def get_times
     times = []
+    puts `clear`
     puts "Enter what time you start: "
     times << gets.chomp.to_i
     puts "Enter what time you end: "
