@@ -17,7 +17,7 @@ class Router
       unless family.nil?
         times = get_times
         payment = family.calculate_pay(times[0], times[1])
-        puts "You will make $#{payment}"
+        payment_message(payment)
         continue_check
       else
         puts `clear`
@@ -28,6 +28,14 @@ class Router
   end
 
   private
+
+  def payment_message(payment)
+    if payment == -1
+      puts "Inproper Times"
+    else
+      puts "You will make $#{payment}"
+    end
+  end
 
   def continue_check
     puts "Would you like to calculate again? (q to quit)"
