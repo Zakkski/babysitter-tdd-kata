@@ -25,6 +25,10 @@ class Family
 
   private
 
+  def validate_times(start_time, end_time)
+    fix_time(start_time) < fix_time(end_time)
+  end
+
   def process_times(pay_period)
     pay_period[:start] = fix_time(pay_period[:start])
     pay_period[:end] = fix_time(pay_period[:end])
